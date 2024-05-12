@@ -1,22 +1,16 @@
-import { Hono } from 'hono'
-import { handle } from 'hono/vercel'
-import { clerkMiddleware, getAuth } from '@hono/clerk-auth';
+import { Hono } from "hono";
+import { handle } from "hono/vercel";
 
-export const runtime = 'edge';
+import accounts from "./accounts";
 
-const app = new Hono().basePath('/api')
+export const runtime = "nodejs"; 
 
-app.get('/test',
-    clerkMiddleware(),
-    (c) => {
-        console.log(c);
-        const auth = getAuth(c);
-        if (!auth?.userId) {
-            return c.json({ error: "Not Authorized"})
-        }
-        return c.json({
-            userId: auth.userId,
-        })
-    });
+const app = new Hono().basePath('/api');
 
-export const GET = handle(app)
+const routes = app
+  .route("/accounts", accounts);
+
+export const GET = handle(app);
+export const POST = handle(app);
+
+export type AppType = typeof routes;
