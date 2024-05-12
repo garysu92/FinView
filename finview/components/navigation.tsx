@@ -62,7 +62,7 @@ export const Navigation = () => {
             <nav className="flex flex-col gap-y-2 pt-6">
               {tabs.map((tab) => (
                 <Button
-                  variant={tab.href === pathname ? "secondary" : "ghost"}
+                  variant={tab.href === pathname ? "secondaryGreen" : "ghostGreen"}
                   className="w-full justify-start"
                   onClick={() => onClick(tab.href)} key={tab.href}
                 >

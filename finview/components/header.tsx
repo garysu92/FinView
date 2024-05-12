@@ -17,9 +17,9 @@ export const Header = () => {
             <Navigation />
           </div>
           <ClerkLoaded>
-            <UserButton
-              afterSignOutUrl="/sign-in"
-            />
+            <div className="p-0.5 rounded-full bg-gradient-to-r from-green-100 to-green-500 hover:from-green-500 hover:to-green-100 flex justify-center align-items">
+              <UserButton afterSignOutUrl="/sign-in" />
+            </div>
           </ClerkLoaded>
           <ClerkLoading>
             <Loader2 className="h-8 w-8 animate-spin text-slate-400" />
