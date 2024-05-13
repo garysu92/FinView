@@ -17,7 +17,7 @@ export const WelcomeMsg = () => {
   }
 
   return (
-    <div className="space-y-2 mb-4">
+    <div className="px-10 space-y-2 mb-4">
       <h2 className="text-2xl lg:text-4xl text-white font-medium flex items-center">
         {greeting}, {user?.firstName} 
       </h2>

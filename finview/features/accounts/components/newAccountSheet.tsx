@@ -2,9 +2,9 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 
-import { AccountForm } from "@/features/accounts/components/account-form";
-import { useNewAccount } from "@/features/accounts/store/use-new-account";
-import { useCreateAccount } from "@/features/accounts/api/use-create-account";
+import { AccountForm } from "@/features/accounts/components/accountForm";
+import { useNewAccount } from "@/features/accounts/store/useNewAccount";
+import { useCreateAccount } from "@/features/accounts/api/useCreateAccount";
 
 import { insertAccountSchema } from "@/db/schema";
 import {
@@ -43,7 +43,7 @@ export const NewAccountSheet = () => {
   };
 
   return (
-    <Sheet open={false} onOpenChange={onClose}>
+    <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="space-y-4">
         <SheetHeader>
           <SheetTitle>
