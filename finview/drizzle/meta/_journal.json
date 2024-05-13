@@ -8,6 +8,13 @@
       "when": 1715481883235,
       "tag": "0000_lame_synch",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1715560552409,
+      "tag": "0001_rare_steel_serpent",
+      "breakpoints": true
     }
   ]
 }
