@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { AccountForm } from "@/features/accounts/components/accountForm";
-import { useNewAccount } from "@/features/accounts/store/useNewAccount";
+import { useNewAccount } from "@/features/accounts/hooks/useNewAccount";
 import { useCreateAccount } from "@/features/accounts/api/useCreateAccount";
 
 import { insertAccountSchema } from "@/db/schema";
