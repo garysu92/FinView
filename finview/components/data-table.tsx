@@ -78,12 +78,12 @@ export function DataTable<TData, TValue>({
     <div className="space-y-2">
         <div className="flex items-center py-4">
             <Input
-                placeholder="Filter emails..."
-                value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-                onChange={(event) =>
-                    table.getColumn("email")?.setFilterValue(event.target.value)
-                }
-                className="max-w-sm"
+              placeholder={`Filter ${filterKey}...`}
+              value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
+              onChange={(event) =>
+                table.getColumn(filterKey)?.setFilterValue(event.target.value)
+              }
+              className="max-w-sm"
             />
             <Button onClick={async () => {
               const ok = await confirm();
