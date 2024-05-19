@@ -21,7 +21,7 @@ export const WelcomeMsg = () => {
       <h2 className="text-2xl lg:text-4xl text-white font-medium flex items-center">
         {greeting}, {user?.firstName} 
       </h2>
-      <p className="text-sm lg:text-base text-green-400">
+      <p className="text-sm lg:text-base text-white">
         This is your Financial Overview
       </p>
     </div>

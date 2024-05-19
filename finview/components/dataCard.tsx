@@ -51,7 +51,6 @@ type BoxVariants = VariantProps<typeof boxVariant>;
 type IconVariants = VariantProps<typeof iconVariant>;
 
 interface DataCardProps extends BoxVariants, IconVariants {
-  icon: IconType;
   title: string;
   value?: number;
   dateRange: string;
@@ -59,7 +58,6 @@ interface DataCardProps extends BoxVariants, IconVariants {
 };
 
 export const DataCard = ({
-  icon: Icon,
   title,
   value = 0,
   variant,
@@ -76,9 +74,6 @@ export const DataCard = ({
           <CardDescription className="line-clamp1">
             {dateRange}
           </CardDescription>
-        </div>
-        <div className={cn(boxVariant({ variant }))}>
-          <Icon className={cn(iconVariant({ variant }))} />
         </div>
       </CardHeader>
       <CardContent>
@@ -107,7 +102,7 @@ export const DataCard = ({
 export const DataCardLoading = () => {
   return (
     <Card className="borer-none drop-shadow-sm h-[192px]">
-      <CardHeader className="flex flex-row items-center jsutify-between gap-x-4">
+      <CardHeader className="flex flex-row items-center justify-between gap-x-4">
         <div className="space-y-2">
           <Skeleton className="h-6 w-24" />
           <Skeleton className="h-4 w-40" />
