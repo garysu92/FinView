@@ -5,7 +5,9 @@ import {
   ResponsiveContainer, 
   BarChart, 
   Bar, 
-  CartesianGrid
+  CartesianGrid,
+  YAxis,
+  Label
 } from "recharts";
 
 import { CustomTooltip } from "@/components/customTooltip";
@@ -23,6 +25,18 @@ export const BarVariant = ({ data }: Props) => {
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
+        <YAxis>
+          <Label
+            style={{
+              textAnchor: "middle",
+              fill: "black",
+            }}
+            angle={270} 
+            value={"$ CAD"} 
+            position="insideLeft"
+            offset={20}
+          />
+        </YAxis>
         <XAxis
           axisLine={false}
           tickLine={false}

@@ -17,6 +17,7 @@ import {
 import { AreaVariant } from "@/components/areaChart";
 import { BarVariant } from "@/components/barChart";
 import { LineVariant } from "@/components/lineChart";
+import { BarPercentChart } from "./percentChart";
 import { Skeleton } from "./ui/skeleton";
 
 type Props = {
@@ -25,9 +26,13 @@ type Props = {
     income: number;
     expenses: number;
   }[];
+  data2: {
+    date: string;
+    percent: number;
+  }[];
 };
 
-export const Chart = ({ data = [] }: Props) => {
+export const Chart = ({ data = [], data2 = [] }: Props) => {
   const [chartType, setChartType] = useState("area");
 
   const onTypeChange = (type: string) => {
@@ -35,8 +40,10 @@ export const Chart = ({ data = [] }: Props) => {
 
     setChartType(type);
   };
-
+  console.log(data);
+  console.log(data2);
   return (
+    <>
     <Card className="border-none drop-shadow-sm">
       <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
         <CardTitle className="text-xl line-clamp-1">
@@ -94,6 +101,26 @@ export const Chart = ({ data = [] }: Props) => {
         )}
       </CardContent>
     </Card>
+    <Card className="border-none drop-shadow-sm">
+      <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
+        <CardTitle className="text-xl line-clamp-1">
+          Percentage Of Income Spent
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        {data.length === 0 ? (
+          <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
+            <FileSearch className="size-6 text-muted-foreground" />
+            <p className="text-muted-foreground text-sm">
+              No data for this period
+            </p>
+          </div>
+        ) : (
+            <BarPercentChart data={data2} />
+        )}
+      </CardContent>
+    </Card>
+    </>
   );
 };
 

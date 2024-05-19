@@ -3,27 +3,26 @@ import {
   Tooltip, 
   XAxis, 
   ResponsiveContainer, 
-  LineChart, 
-  Line, 
+  BarChart, 
+  Bar, 
   CartesianGrid,
-  Label,
-  YAxis
+  YAxis,
+  Label
 } from "recharts";
 
-import { CustomTooltip } from "@/components/customTooltip";
+import { CustomTooltip2 } from "@/components/customTooltip";
 
 type Props = {
   data: {
     date: string;
-    income: number;
-    expenses: number;
+    percent: number;
   }[];
 };
 
-export const LineVariant = ({ data }: Props) => {
+export const BarPercentChart = ({ data }: Props) => {
   return (
-    <ResponsiveContainer width="100%" height={350}>
-      <LineChart data={data}>
+    <ResponsiveContainer width="100%" height={350} >
+      <BarChart data={data} barCategoryGap="20%">
         <CartesianGrid strokeDasharray="3 3" />
         <YAxis>
           <Label
@@ -32,10 +31,10 @@ export const LineVariant = ({ data }: Props) => {
               fill: "black",
             }}
             angle={270} 
-            value={"$ CAD"} 
+            value={"%"} 
             position="insideLeft"
             offset={20}
-          />
+        />
         </YAxis>
         <XAxis
           axisLine={false}
@@ -45,22 +44,13 @@ export const LineVariant = ({ data }: Props) => {
           style={{ fontSize: "12px" }}
           tickMargin={16}
         />
-        <Tooltip content={<CustomTooltip />} />
-        <Line
-          dot={false}
-          dataKey="income"
-          stroke="#3b82f6"
-          strokeWidth={2}
+        <Tooltip content={<CustomTooltip2 />} />
+        <Bar
+          dataKey="percent"
+          fill="#3b82f6"
           className="drop-shadow-sm"
         />
-        <Line
-          dot={false}
-          dataKey="expenses"
-          stroke="#f43f5e"
-          strokeWidth={2}
-          className="drop-shadow-sm"
-        />
-      </LineChart>
+      </BarChart>
     </ResponsiveContainer>
   );
 };

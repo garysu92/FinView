@@ -24,10 +24,6 @@ const tabs = [
         href: "/accounts"
     },
     {
-        label: "Categories",
-        href: "/categories"
-    },
-    {
         label: "Settings",
         href: "/settings"
     },

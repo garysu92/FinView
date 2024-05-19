@@ -5,7 +5,9 @@ import {
   AreaChart, 
   Area, 
   ResponsiveContainer, 
-  CartesianGrid
+  CartesianGrid,
+  YAxis,
+  Label
 } from "recharts";
 
 import { CustomTooltip } from "@/components/customTooltip";
@@ -33,6 +35,18 @@ export const AreaVariant = ({ data }: Props) => {
             <stop offset="98%" stopColor="#f43f5e" stopOpacity={0} />
           </linearGradient>
         </defs>
+        <YAxis>
+          <Label
+            style={{
+              textAnchor: "middle",
+              fill: "black",
+            }}
+            angle={270} 
+            value={"$ CAD"} 
+            position="insideLeft"
+            offset={20}
+          />
+        </YAxis>
         <XAxis
           axisLine={false}
           tickLine={false}
