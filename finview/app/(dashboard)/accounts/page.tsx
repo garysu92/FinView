@@ -22,7 +22,7 @@ const AccountsPage = () => {
   const newAccount = useNewAccount();
   const deleteAccounts = useBulkDeleteAccounts();
   const accountsQuery = useGetAccounts();
-  const accounts = accountsQuery.data as { id: string; name: string; }[];
+  const accounts = accountsQuery.data || [];
 
   const isDisabled =
     accountsQuery.isLoading ||
@@ -63,7 +63,7 @@ const AccountsPage = () => {
             columns={columns} 
             data={accounts}
             onDelete={(row) => {
-              const ids = row.map((r) => r.original.id);
+              const ids = row.map((r) => r.id);
               deleteAccounts.mutate({ ids });
             }}
             disabled={isDisabled}

@@ -23,11 +23,6 @@ const tabs = [
         label: "Accounts",
         href: "/accounts"
     },
-    {
-        label: "Settings",
-        href: "/settings"
-    },
-
 ]
 
 export const Navigation = () => {

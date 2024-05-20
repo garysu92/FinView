@@ -36,8 +36,6 @@ export const Chart = ({ data = [], data2 = [] }: Props) => {
   const [chartType, setChartType] = useState("area");
 
   const onTypeChange = (type: string) => {
-    // TODO: Add paywall
-
     setChartType(type);
   };
 
