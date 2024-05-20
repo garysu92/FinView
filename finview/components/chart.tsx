@@ -17,7 +17,7 @@ import {
 import { AreaVariant } from "@/components/areaChart";
 import { BarVariant } from "@/components/barChart";
 import { LineVariant } from "@/components/lineChart";
-import { BarPercentChart } from "./percentChart";
+import { BarSpentChart } from "./percentChart";
 import { Skeleton } from "./ui/skeleton";
 
 type Props = {
@@ -28,7 +28,7 @@ type Props = {
   }[];
   data2: {
     date: string;
-    percent: number;
+    amount: number;
   }[];
 };
 
@@ -40,87 +40,86 @@ export const Chart = ({ data = [], data2 = [] }: Props) => {
 
     setChartType(type);
   };
-  console.log(data);
-  console.log(data2);
+
   return (
-    <>
-    <Card className="border-none drop-shadow-sm">
-      <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
-        <CardTitle className="text-xl line-clamp-1">
-          Transactions
-        </CardTitle>
-        <Select
-          defaultValue={chartType}
-          onValueChange={onTypeChange}
-        >
-          <SelectTrigger className="lg:w-auto h-9 rounded-md px-3">
-            <SelectValue placeholder="Chart type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="area">
-              <div className="flex items-center">
-                <AreaChart className="size-4 mr-2 shrink-0" />
-                <p className="line-clamp-1">
-                  Area chart
-                </p>
-              </div>
-            </SelectItem>
-            <SelectItem value="line">
-              <div className="flex items-center">
-                <LineChart className="size-4 mr-2 shrink-0" />
-                <p className="line-clamp-1">
-                  Line chart
-                </p>
-              </div>
-            </SelectItem>
-            <SelectItem value="bar">
-              <div className="flex items-center">
-                <BarChart3 className="size-4 mr-2 shrink-0" />
-                <p className="line-clamp-1">
-                  Bar chart
-                </p>
-              </div>
-            </SelectItem>
-          </SelectContent>
-        </Select>
-      </CardHeader>
-      <CardContent>
-        {data.length === 0 ? (
-          <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
-            <FileSearch className="size-6 text-muted-foreground" />
-            <p className="text-muted-foreground text-sm">
-              No data for this period
-            </p>
-          </div>
-        ) : (
-          <>
-            {chartType === "line" && <LineVariant data={data} />}
-            {chartType === "area" && <AreaVariant data={data} />}
-            {chartType === "bar" && <BarVariant data={data} />}
-          </>
-        )}
-      </CardContent>
-    </Card>
-    <Card className="border-none drop-shadow-sm">
-      <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
-        <CardTitle className="text-xl line-clamp-1">
-          Percentage Of Income Spent
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        {data.length === 0 ? (
-          <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
-            <FileSearch className="size-6 text-muted-foreground" />
-            <p className="text-muted-foreground text-sm">
-              No data for this period
-            </p>
-          </div>
-        ) : (
-            <BarPercentChart data={data2} />
-        )}
-      </CardContent>
-    </Card>
-    </>
+    <div className="space-y-8">
+      <Card className="border-none drop-shadow-sm">
+        <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
+          <CardTitle className="text-xl line-clamp-1">
+            Transactions
+          </CardTitle>
+          <Select
+            defaultValue={chartType}
+            onValueChange={onTypeChange}
+          >
+            <SelectTrigger className="lg:w-auto h-9 rounded-md px-3">
+              <SelectValue placeholder="Chart type" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="area">
+                <div className="flex items-center">
+                  <AreaChart className="size-4 mr-2 shrink-0" />
+                  <p className="line-clamp-1">
+                    Area chart
+                  </p>
+                </div>
+              </SelectItem>
+              <SelectItem value="line">
+                <div className="flex items-center">
+                  <LineChart className="size-4 mr-2 shrink-0" />
+                  <p className="line-clamp-1">
+                    Line chart
+                  </p>
+                </div>
+              </SelectItem>
+              <SelectItem value="bar">
+                <div className="flex items-center">
+                  <BarChart3 className="size-4 mr-2 shrink-0" />
+                  <p className="line-clamp-1">
+                    Bar chart
+                  </p>
+                </div>
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        </CardHeader>
+        <CardContent>
+          {data.length === 0 ? (
+            <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
+              <FileSearch className="size-6 text-muted-foreground" />
+              <p className="text-muted-foreground text-sm">
+                No data for this period
+              </p>
+            </div>
+          ) : (
+            <>
+              {chartType === "line" && <LineVariant data={data} />}
+              {chartType === "area" && <AreaVariant data={data} />}
+              {chartType === "bar" && <BarVariant data={data} />}
+            </>
+          )}
+        </CardContent>
+      </Card>
+      <Card className="border-none drop-shadow-sm">
+        <CardHeader className="flex space-y-2 lg:space-y-0 lg:flex-row lg:items-center justify-between">
+          <CardTitle className="text-xl line-clamp-1">
+            Net Income Per Day
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          {data.length === 0 ? (
+            <div className="flex flex-col gap-y-4 items-center justify-center h-[350px] w-full">
+              <FileSearch className="size-6 text-muted-foreground" />
+              <p className="text-muted-foreground text-sm">
+                No data for this period
+              </p>
+            </div>
+          ) : (
+              <BarSpentChart data={data2} />
+          )}
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

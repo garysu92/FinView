@@ -15,11 +15,12 @@ import { CustomTooltip2 } from "@/components/customTooltip";
 type Props = {
   data: {
     date: string;
-    percent: number;
+    amount: number;
   }[];
 };
 
-export const BarPercentChart = ({ data }: Props) => {
+export const BarSpentChart = ({ data }: Props) => {
+    console.log(data)
   return (
     <ResponsiveContainer width="100%" height={350} >
       <BarChart data={data} barCategoryGap="20%">
@@ -31,9 +32,9 @@ export const BarPercentChart = ({ data }: Props) => {
               fill: "black",
             }}
             angle={270} 
-            value={"%"} 
+            value={"$ CAD"} 
             position="insideLeft"
-            offset={20}
+            offset={10}
         />
         </YAxis>
         <XAxis
@@ -46,8 +47,8 @@ export const BarPercentChart = ({ data }: Props) => {
         />
         <Tooltip content={<CustomTooltip2 />} />
         <Bar
-          dataKey="percent"
-          fill="#3b82f6"
+          dataKey="amount"
+          fill="gray"
           className="drop-shadow-sm"
         />
       </BarChart>

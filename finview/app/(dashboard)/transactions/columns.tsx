@@ -90,7 +90,7 @@ export const columns: ColumnDef<ResponseType>[] = [
       )
     },
     cell: ({ row }) => {
-      const amount = convertAmountFromMiliunits(parseFloat(row.getValue("amount")));
+      const amount = parseFloat(row.getValue("amount"));
 
       return (
         <Badge

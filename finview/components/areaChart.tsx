@@ -44,7 +44,7 @@ export const AreaVariant = ({ data }: Props) => {
             angle={270} 
             value={"$ CAD"} 
             position="insideLeft"
-            offset={20}
+            offset={10}
           />
         </YAxis>
         <XAxis
